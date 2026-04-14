@@ -1,0 +1,91 @@
+/**
+ * 微博会员装扮审核平台 - 全局样式
+ * 严格按照微博UDC会员设计中心规范
+ * 设计师：沙莎 | 邮箱：shasha19@staff.weibo.com
+ */
+
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", "Noto Sans SC", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", "Noto Serif SC", serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --color-weibo-orange: #FF7D00;
+  --color-weibo-orange-light: #FF9E3D;
+  --color-weibo-orange-dark: #CC6400;
+  --color-weibo-gold: #FFC800;
+  --color-weibo-gold-light: #FFE066;
+  --color-weibo-gold-dark: #D4A000;
+  
+  --color-bg-primary: #FFFBF5;
+  --color-bg-secondary: #FFFAF2;
+  
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-2xl: 48px;
+
+  --shadow-sm: 0 2px 4px rgba(255, 125, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-md: 0 8px 16px rgba(255, 125, 0, 0.08), 0 4px 8px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 16px 32px rgba(255, 125, 0, 0.12), 0 8px 16px rgba(0, 0, 0, 0.06);
+  --shadow-glow: 0 0 30px rgba(255, 125, 0, 0.15);
+  --shadow-float: 0 24px 64px rgba(255, 125, 0, 0.16), 0 12px 24px rgba(0, 0, 0, 0.08);
+}
+
+@layer base {
+  body {
+    @apply bg-bg-primary text-[#1A1A1A] antialiased selection:bg-weibo-orange/20 selection:text-weibo-orange-dark;
+  }
+  
+  h1, h2, h3 {
+    @apply tracking-tight;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-white/80 backdrop-blur-xl border border-white/20 shadow-md;
+  }
+  
+  .glass-card {
+    @apply bg-white/90 backdrop-blur-lg border border-[#FFE8CC] shadow-sm hover:shadow-lg transition-all duration-500;
+  }
+  
+  .btn-tactile {
+    @apply active:scale-95 transition-all duration-200;
+  }
+}
+
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(255, 125, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 125, 0, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+@keyframes logoShine {
+  0% { transform: translateX(-100%) translateY(-100%); }
+  100% { transform: translateX(100%) translateY(100%); }
+}
+
+.logo-shine::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent 40%, rgba(255, 255, 255, 0.3) 50%, transparent 60%);
+  animation: logoShine 4s ease-in-out infinite;
+}
+
+.text-gradient-weibo {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-weibo-orange to-weibo-gold;
+}
+
+.border-gradient-weibo {
+  border-image: linear-gradient(to right, var(--color-weibo-orange), var(--color-weibo-gold)) 1;
+}
